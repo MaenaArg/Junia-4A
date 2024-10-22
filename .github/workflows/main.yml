@@ -5,12 +5,11 @@ on:
 
 jobs:
     lint:
-      runs-on: [self-hosted, linux, x64]
+        runs-on: [self-hosted, linux, x64]
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v3
 
-      steps:
-          - name: Checkout repo
-          uses: actions/checkout@v3
-
-          - name: lint
-          run: php -l *.php
+            - name: lint
+              run: php -l *.php
 
