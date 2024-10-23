@@ -1,26 +1,22 @@
 name: workflow
 
-#Le workflow s'exécute lorsqu'un push est effectué sur la branche develop
+# Le workflow s'exécute lorsqu'un push est effectué sur la branche develop
 on:
   push:
     branches:
-      -develop
+      - develop  # Ajout d'un espace après le tiret pour la syntaxe correcte
 
 jobs:
   lint:
     runs-on: self-hosted
 
     steps:
-        # Etape 1 : Checker le code du dépôt, re clonner le repository
-        
-	- name: Check du repository
+      # Étape 1 : Checker le code du dépôt, re-cloner le repository
+      - name: Check du repository
         uses: actions/checkout@v3
 
-        # Etape 2 : Trouver les fichiers PHP et executer "php -l" sur eux
-        
-	- name : Execution sur les fichiers PHP
-	# find .  : cherche dans le dossier courant
-	# -exec : execute une commande sur chaque fichier trouvé, ";" fin de exec
-	# {} : placeholder qui se rempli par le nom de chaque fichier trouvé
-        run: find . -iname "*.php" -exec php -l {} ;
+      # Étape 2 : Trouver les fichiers PHP et exécuter "php -l" sur eux
+      - name: Execution sur les fichiers PHP
+        run: find . -iname "*.php" -exec php -l {} \;
+
 
